@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: { { template "nginx-demo-chart.fullname" . } }
+  name: {{ include "nginx-demo-chart.fullname" . }}
 spec:
   selector:
-    istio: { { ".Values.gateway.ingress" } }
+    istio: {{ .Values.gateway.ingress | quote }}
   servers:
-    - hosts: { { - include ".Values.gateway.hosts" . | nindent 4 } }
+    - hosts: {{ toYaml .Values.gateway.hosts | nindent 6 }}
       port:
         name: http
         number: 8080
