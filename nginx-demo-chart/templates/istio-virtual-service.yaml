@@ -1,14 +1,14 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: { { template "nginx-demo-chart.fullname" . } }
+  name: {{ include "nginx-demo-chart.fullname" . }}
 spec:
-  hosts: { { - include ".Values.gateway.hosts" . | nindent 4 } }
+  hosts: {{ toYaml .Values.gateway.hosts | nindent 4 }}
   gateways:
-    - { { template "nginx-demo-chart.fullname" . } }
+    - {{ include "nginx-demo-chart.fullname" . }}
   http:
     - route:
         - destination:
-            host: { { - include ".Values.gateway.hosts" . | nindent 4 } }
+            host: {{ include "nginx-demo-chart.fullname" . }}
             port:
               number: 80
