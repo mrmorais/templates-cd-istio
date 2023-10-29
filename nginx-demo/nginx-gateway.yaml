@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway
   servers:
     - hosts:
-        - local.cluster
+        - nginx.local.cluster
         - nginx.mrmorais.com
       port:
         name: http
