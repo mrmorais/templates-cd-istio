@@ -9,5 +9,5 @@ spec:
   http:
     - route:
       - destination:
-          host: nginx
+          host: nginx.default.svc.cluster.local
           subset: v1
