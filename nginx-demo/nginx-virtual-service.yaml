@@ -4,7 +4,8 @@ metadata:
   name: nginx
 spec:
   hosts:
-    - '*'
+    - nginx.local.cluster
+    - nginx.mrmorais.com
   http:
     - route:
       - destination:
