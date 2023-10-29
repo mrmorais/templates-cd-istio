@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: { { template "nginx-demo-chart.fullname" . } }
+spec:
+  selector:
+    istio: { { ".Values.gateway.ingress" } }
+  servers:
+    - hosts: { { - include ".Values.gateway.hosts" . | nindent 4 } }
+      port:
+        name: http
+        number: 8080
+        protocol: HTTP
