@@ -4,9 +4,9 @@ metadata:
   name: nginx
 spec:
   hosts:
-  - '*'
+    - '*'
   http:
-  - route:
-    - destination:
-        host: nginx
-        subset: v1
+    - route:
+      - destination:
+          host: nginx
+          subset: v1
