@@ -6,8 +6,11 @@ spec:
   hosts:
     - nginx.local.cluster
     - nginx.mrmorais.com
+  gateways:
+    - nginx-gateway
   http:
     - route:
-      - destination:
-          host: nginx.default.svc.cluster.local
-          subset: v1
+        - destination:
+            host: nginx
+            port:
+              number: 80
